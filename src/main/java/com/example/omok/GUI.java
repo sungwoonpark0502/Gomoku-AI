@@ -72,9 +72,16 @@ public class GUI implements ActionListener {
                         check();
                         Stone temp = b.fillBoard(buttons[i]);
                         ai.setResultBoard(temp);
+
+                        // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
+                        // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
+                        Pair tempPair= new Pair(buttons[i].getX(), buttons[i].getY());
+                        if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
+                            break;
+                        } 
                     }
                 }
-                else{
+                else{ // 이 부분 인공지능 턴으로 만들어주기
                     if (buttons[i].getText() == "") {
                         buttons[i].setForeground(Color.black);
                         buttons[i].setText("O");
@@ -83,12 +90,18 @@ public class GUI implements ActionListener {
                         check();
                         Stone temp = b.fillBoard(buttons[i]);
                         ai.setResultBoard(temp);
+
+                        // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
+                        // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
+                        Pair tempPair= new Pair(buttons[i].getX(), buttons[i].getY());
+                        if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
+                            break;
+
+                        } 
                     }
                 }
             }
-            /* if (wincon()) {
-                break;
-            } 윈컨 예시 SearchTree.java에 있음 + 유저 턴 하나 빼주고 인공지능 턴 추가해줘야함 + AInode 랑 AI 바탕으로 미니맥스 구현*/
+            
         }
     }
 
