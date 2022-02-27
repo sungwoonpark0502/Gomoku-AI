@@ -76,6 +76,7 @@ public class GUI implements ActionListener {
                         // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
                         Pair tempPair= new Pair(i % 13, i / 13);
                         if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
+                            System.out.println("오목 승리자 나옴!");
                             break;
                         } 
                     }
@@ -94,8 +95,8 @@ public class GUI implements ActionListener {
                         // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
                         Pair tempPair= new Pair(i % 13, i / 13);
                         if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
+                            System.out.println("오목 승리자 나옴!");
                             break;
-
                         } 
                     }
                 }
@@ -103,7 +104,6 @@ public class GUI implements ActionListener {
 //                AI.displayResult();
             }
         }
-        System.out.println("오목 승리자 나옴!");
     }
 
     public void check(){
