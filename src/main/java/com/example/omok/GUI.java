@@ -88,24 +88,9 @@ public class GUI implements ActionListener {
             }
             /* if (wincon()) {
                 break;
-            } */
+            } 윈컨 예시 SearchTree.java에 있음 + 유저 턴 하나 빼주고 인공지능 턴 추가해줘야함 + AInode 랑 AI 바탕으로 미니맥스 구현*/
         }
     }
-
-    /*
-    public void firstTurn(){
-        try{
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // get random num 0 or 1
-        if(random.nextInt(2) != 0){
-            b.changeTurn();
-        }
-
-        textField.setText("Black Turn");
-    } */
 
     public void check(){
 
