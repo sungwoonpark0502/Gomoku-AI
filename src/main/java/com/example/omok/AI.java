@@ -6,8 +6,8 @@ public class AI {
 
     private static GameBoard board;
     private static int[][] resultBoard;
-    private int max;
-    private int min;
+    private static int max;
+    private static int min;
     private static ArrayList<Pair> minmaxList = new ArrayList<>();
 
     public AI(GameBoard b) {
@@ -15,7 +15,7 @@ public class AI {
         resultBoard = new int[board.getSize()][board.getSize()];
     }
 
-    public int getPossibilities() {
+    public void getPossibilities() {
         if ( !board.getPlayerTurn() == false ) {
             for ( int i = 0 ; i < resultBoard.length ; i++) {
                 for ( int j = 0 ; j < resultBoard[0].length ; i++) {
@@ -36,8 +36,6 @@ public class AI {
                 }
             }
         }
-
-        return 0;
     }
 
     public int getMaxNum() {
@@ -183,6 +181,17 @@ public class AI {
         }
     }
 
+    public static int getMin() {
+        return min;
+    }
+    
+    public static GameBoard getGameBoard() {
+        return board;
+    }
+
+    public static int getMax() {
+        return max;
+    }
     public static ArrayList<Pair> getMinMaxList() {
         return minmaxList;
     }

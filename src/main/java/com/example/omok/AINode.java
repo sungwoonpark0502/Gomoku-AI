@@ -5,22 +5,30 @@ import java.util.*;
 public class AINode {
     
     private AI data;
-    private AINode parentNode; // for some reason it could be used.
     private static ArrayList<AINode> children = new ArrayList<>();
-    
-    public class Pair {
-        int x;
-        int y;
+    private int depth;
+    private static Pair lastCord;
 
-        public Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    public AINode(AI value) {
+    public AINode(AI value, int depth, Pair lastCord) {
         data = value;
-        parentNode = null;
+        this.depth = depth;
+        this.lastCord = lastCord;
+
+        ArrayList<Pair> temp = AI.getMinMaxList();
+        
+        for ( Pair cord : temp ) {
+            int xCord = cord.x;
+            int yCord = cord.y;
+
+            GameBoard newGameBoard = AI.getGameBoard();
+            Stone tempStone = newGameBoard.fillBoard(yCord, xCord);
+            AI tempAi = new AI(newGameBoard);
+            tempAi.setResultBoard(tempStone);
+
+            AINode child = new AINode(tempAi, this.depth + 1, cord);
+            
+            children.add(child);
+        }
     }
 
     public AI getData() {
@@ -47,18 +55,12 @@ public class AINode {
         }
     }
 
-    public void setParent(AINode parent) {
-        parentNode = parent;
+    public static Pair getLastCord() {
+        return lastCord;
     }
 
     public static ArrayList<AINode> getChildren(AINode x) {
         return children;
     }
-
-    public void putChildrenNode() {
-        ArrayList<Pair> temp = AI.getMinMaxList();
-
-    }
 }
 
-// AI min board min 

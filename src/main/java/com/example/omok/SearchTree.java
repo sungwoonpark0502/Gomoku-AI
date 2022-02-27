@@ -7,8 +7,8 @@ public class SearchTree {
     public ArrayList<AINode> path = new ArrayList<>();
     public ArrayList<AINode> visited = new ArrayList<>();
     
-    public void bfs(AINode x) {
-        if ( x == null) return;
+    public ArrayList<AINode> bfs(AINode x) {
+        if ( x == null) return null;
 
         queue.add(x);
 
@@ -16,33 +16,25 @@ public class SearchTree {
             AINode temp = queue.remove();
             ArrayList<AINode> tempChildren = AINode.getChildren(temp);
 
+            if (WinCon.isWinCon(temp)) {
+                return path;
+            }
+
+            if (visited.contains(temp)) continue;
+
+            visited.add(temp);
+
             if(temp != null) {
                 for ( int i = 0 ; i < tempChildren.size() ; i++) {
                     if (tempChildren.get(i) != null) {
                         queue.add(tempChildren.get(i));
-                        break;
+                        path.add(tempChildren.get(i));
                     }
                 }
             }
          }
+         return null;
     }
-    
-    //몇수를 볼수있는지에 대한 리밋 걸거나, 프루닝 << 레퍼런스가 많을거란말이지  >3<
-    public int valueCal() {
-        
-        int size = queue.size();
-        int totalVal = 0;
-
-        for ( int i = 0 ; i < size; i++){
-            AINode temp = queue.remove();
-
-            totalVal += temp.getData();
-
-            queue.add(temp);
-        }
-
-        return totalVal;
-    }
-
-
 }
+
+
