@@ -16,7 +16,7 @@ public class GUI implements ActionListener {
     JPanel button_panel = new JPanel();
     JLabel textField = new JLabel();
     JButton[] buttons = new JButton[169];
-    boolean player1_turn;
+    GameBoard b = new GameBoard(13);
 
     GUI(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class GUI implements ActionListener {
         title_panel.setLayout(new BorderLayout());
         title_panel.setBounds(0,0,800,100);
 
-        button_panel.setLayout(new GridLayout(14,14));
+        button_panel.setLayout(new GridLayout(13,13));
         button_panel.setBackground(new Color(150,150,150));
 
         for(int i = 0; i < 169; i++){
@@ -49,6 +49,7 @@ public class GUI implements ActionListener {
         title_panel.add(textField);
         frame.add(title_panel, BorderLayout.NORTH);
         frame.add(button_panel);
+
         for(int i = 0; i < 169; i++){
             buttons[i].setBorder(new LineBorder(Color.black));
             buttons[i].setBackground(new Color(135,80,0));
@@ -61,28 +62,34 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         for(int i = 0; i < 169; i++){
             if(e.getSource() == buttons[i]){
-                if(player1_turn){
+                if(b.getPlayerTurn()){
                     if (buttons[i].getText() == "") {
                         buttons[i].setForeground(Color.white);
                         buttons[i].setText("O");
-                        player1_turn = false;
                         textField.setText("Black Turn");
+                        b.changeTurn();
                         check();
+                        b.fillBoard(buttons[i]);
                     }
                 }
                 else{
                     if (buttons[i].getText() == "") {
                         buttons[i].setForeground(Color.black);
                         buttons[i].setText("O");
-                        player1_turn = true;
                         textField.setText("White Turn");
+                        b.changeTurn();
                         check();
+                        b.fillBoard(buttons[i]);
                     }
                 }
             }
+            /* if (wincon()) {
+                break;
+            } */
         }
     }
 
+    /*
     public void firstTurn(){
         try{
             Thread.sleep(2000);
@@ -90,40 +97,17 @@ public class GUI implements ActionListener {
             e.printStackTrace();
         }
         // get random num 0 or 1
-        if(random.nextInt(2) == 0){
-            player1_turn = true;
-            textField.setText("White Turn");
+        if(random.nextInt(2) != 0){
+            b.changeTurn();
         }
-        else{
-            player1_turn = false;
-            textField.setText("Black Turn");
-        }
-    }
+
+        textField.setText("Black Turn");
+    } */
 
     public void check(){
+
     }
 
-    public void whiteWins(int a, int b, int c){
-        buttons[a].setBackground(Color.GREEN);
-        buttons[b].setBackground(Color.GREEN);
-        buttons[c].setBackground(Color.GREEN);
-
-        for(int i = 0; i < 169; i++){
-            buttons[i].setEnabled(false);
-        }
-        textField.setText("Black WINS!");
-    }
-
-    public void blackWins(int a, int b, int c){
-        buttons[a].setBackground(Color.GREEN);
-        buttons[b].setBackground(Color.GREEN);
-        buttons[c].setBackground(Color.GREEN);
-
-        for(int i = 0; i < 169; i++){
-            buttons[i].setEnabled(false);
-        }
-        textField.setText("White WINS!");
-    }
     public static void main(String[] args){
         new GUI();
     }

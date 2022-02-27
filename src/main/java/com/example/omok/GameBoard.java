@@ -1,5 +1,7 @@
 package com.example.omok;
 
+import javax.swing.*;
+
 public class GameBoard {
 
     private Stone[][] board;
@@ -14,12 +16,10 @@ public class GameBoard {
         playerTurn = true;
     }
 
-    public Stone fillBoard(int x, int y) {
-        String color = "";
-        if (playerTurn) color = "white";
-        else color = "black";
-        Stone s = new Stone(color, x, y);
-        board[y - 1][x - 1] = s;
+    public Stone fillBoard(JButton x) {
+        JButton temp = x;
+        Stone s = new Stone(temp.getForeground().toString().toLowerCase(), temp.getX(), temp.getY());
+        board[temp.getY() / 13 - 1][temp.getX() / 13 - 1] = s;
         return s;
     }
 
@@ -29,7 +29,7 @@ public class GameBoard {
     }
 
     public void changeTurn() {
-        playerTurn = !playerTurn;
+        this.playerTurn = !playerTurn;
     }
 
     public void displayBoard() {
