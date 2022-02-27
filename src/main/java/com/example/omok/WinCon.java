@@ -12,7 +12,8 @@ public class WinCon {
         GameBoard tmpGameBoard = temp.getGameBoard();
         Stone[][] tempBoard = tmpGameBoard.getBoard();
         
-        result = checkDiagonal(tempBoard, xCord, yCord) || checkStraight(tempBoard, xCord, yCord);
+        result = checkDiagonal(tempBoard, xCord, yCord) || checkStraight(tempBoard, xCord, yCord)
+                || checkVertical(tempBoard, xCord, yCord) || checkDiagonal2(tempBoard, xCord, yCord);
 
         return result;
     }
@@ -35,8 +36,27 @@ public class WinCon {
                 else break;
             }
 
-            for (int i = x; i < board.length; i++) {
+            for (int i = x; i < board[0].length; i++) {
                 if (board[y][i] != null && checker.getColor().equals(board[y][i].getColor())) count++;
+                else break;
+            }
+        }
+
+        return count >= 5;
+    }
+
+    public static boolean checkVertical(Stone[][] board, int x, int y) {
+        int count = 0;
+        Stone checker = board[y][x];
+
+        if (checker != null) {
+            for (int i = y - 1; y > 0; i--) {
+                if (board[i][x] != null && checker.getColor().equals(board[i][x].getColor())) count++;
+                else break;
+            }
+
+            for (int i = y; i < board.length; i++) {
+                if (board[i][x] != null && checker.getColor().equals(board[i][x].getColor())) count++;
                 else break;
             }
         }
@@ -67,6 +87,36 @@ public class WinCon {
                 count++;
                 j--;
                 k--;
+            }
+            else break;
+        }
+
+        return count == 5;
+    }
+
+    public static boolean checkDiagonal2(Stone[][] board, int x, int y) {
+        int count = 1;
+        Stone checker = board[y][x];
+        int j = x + 1;
+        int k = y - 1;
+
+        while ( j < board.length && k < board.length) {
+            if (board[k][j] != null && board[k][j].getColor().equals(checker.getColor())) {
+                count++;
+                k--;
+                j++;
+            }
+            else break;
+        }
+
+        j = x - 1;
+        k = y + 1;
+
+        while ( j > 0 && k > 0) {
+            if (board[k][j] != null && board[k][j].getColor().equals(checker.getColor())) {
+                count++;
+                j--;
+                k++;
             }
             else break;
         }
