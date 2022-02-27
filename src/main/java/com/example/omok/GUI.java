@@ -99,11 +99,11 @@ public class GUI implements ActionListener {
                         } 
                     }
                 }
-                b.displayBoard();
-                AI.displayResult();
+//                b.displayBoard();
+//                AI.displayResult();
             }
-            
         }
+        System.out.println("오목 승리자 나옴!");
     }
 
     public void check(){
