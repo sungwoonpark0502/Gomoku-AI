@@ -17,6 +17,7 @@ public class GUI implements ActionListener {
     JLabel textField = new JLabel();
     JButton[] buttons = new JButton[169];
     GameBoard b = new GameBoard(13);
+    AI ai = new AI(b);
 
     GUI(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +70,8 @@ public class GUI implements ActionListener {
                         textField.setText("Black Turn");
                         b.changeTurn();
                         check();
-                        b.fillBoard(buttons[i]);
+                        Stone temp = b.fillBoard(buttons[i]);
+                        ai.setResultBoard(temp);
                     }
                 }
                 else{
@@ -79,7 +81,8 @@ public class GUI implements ActionListener {
                         textField.setText("White Turn");
                         b.changeTurn();
                         check();
-                        b.fillBoard(buttons[i]);
+                        Stone temp = b.fillBoard(buttons[i]);
+                        ai.setResultBoard(temp);
                     }
                 }
             }
