@@ -1,4 +1,4 @@
-package com.example.omok.Omok;
+package com.example.omok;
 
 public class Omok {
 

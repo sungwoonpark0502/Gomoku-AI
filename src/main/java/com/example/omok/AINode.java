@@ -1,3 +1,5 @@
+package com.example.omok;
+
 import java.util.*;
 
 public class AINode {

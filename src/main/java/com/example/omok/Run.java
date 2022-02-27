@@ -1,4 +1,6 @@
-package com.example.omok.Omok;
+package com.example.omok;
+
+import com.example.omok.AI;
 
 import java.util.Scanner;
 
