@@ -43,6 +43,13 @@ public class GameBoard {
         }
     }
 
+    public boolean isWinner() {
+
+
+
+        return true;
+    }
+
     public Stone[][] getBoard() {
         return this.board;
     }
