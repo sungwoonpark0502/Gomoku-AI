@@ -18,7 +18,7 @@ public class AI {
     public void getPossibilities() {
         if ( !board.getPlayerTurn() == false ) {
             for ( int i = 0 ; i < resultBoard.length ; i++) {
-                for ( int j = 0 ; j < resultBoard[0].length ; i++) {
+                for ( int j = 0 ; j < resultBoard[0].length ; j++) {
                    if( min == resultBoard[i][j]) {
                         Pair temp = new Pair(j, i);
                         minmaxList.add(temp);
@@ -28,7 +28,7 @@ public class AI {
         }
         else {
             for ( int i = 0 ; i < resultBoard.length ; i++) {
-                for ( int j = 0 ; j < resultBoard[0].length ; i++) {
+                for ( int j = 0 ; j < resultBoard[0].length ; j++) {
                    if( max == resultBoard[i][j]) {
                         Pair temp = new Pair(j, i);
                         minmaxList.add(temp);
@@ -36,6 +36,20 @@ public class AI {
                 }
             }
         }
+    }
+
+    public Pair getAiChoice() {
+        Pair pair = null;
+
+        for (int i = 0; i < resultBoard.length; i++) {
+            for (int j = 0; j < resultBoard.length; j++) {
+                if (max == resultBoard[i][j]) {
+                    pair = new Pair(j, i);
+                }
+            }
+        }
+
+        return pair;
     }
 
     public int getMaxNum() {

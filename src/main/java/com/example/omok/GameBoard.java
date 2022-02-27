@@ -13,7 +13,7 @@ public class GameBoard {
     public GameBoard(int size) {
         board = new Stone[size][size];
         this.size = size;
-        playerTurn = false;
+        playerTurn = true;
     }
 
     public Stone fillBoard(JButton x, int location) {

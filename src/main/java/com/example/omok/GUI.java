@@ -79,25 +79,46 @@ public class GUI implements ActionListener {
                             break;
                         } 
                     }
-                }
-                else{ // 이 부분 인공지능 턴으로 만들어주기
 
-                    if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(Color.black);
-                        buttons[i].setText("O");
+                    ai.calculateBoard();
+                    Pair pair = ai.getAiChoice();
+                    int aiPosition = pair.x + pair.y * 13;
+                    if (buttons[aiPosition].getText() == "") {
+                        buttons[aiPosition].setForeground(Color.black);
+                        buttons[aiPosition].setText("O");
                         textField.setText("White Turn");
                         check();
-                        Stone temp = b.fillBoard(buttons[i], i);
+                        Stone temp = b.fillBoard(buttons[aiPosition], aiPosition);
                         ai.setResultBoard(temp);
 
                         // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
                         // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
-                        Pair tempPair= new Pair(i % 13, i / 13);
+                        Pair tempPair= new Pair(aiPosition % 13, aiPosition / 13);
                         if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
                             break;
 
-                        } 
+                        }
                     }
+//                else{ // 이 부분 인공지능 턴으로 만들어주기
+//                    ai.getPossibilities();
+//                    ArrayList<Pair> aiChoice = AI.getMinMaxList();
+//                    int aiPosition = aiChoice.get(0).x + aiChoice.get(0).y * 13;
+//                    if (buttons[aiPosition].getText() == "") {
+//                        buttons[aiPosition].setForeground(Color.black);
+//                        buttons[aiPosition].setText("O");
+//                        textField.setText("White Turn");
+//                        check();
+//                        Stone temp = b.fillBoard(buttons[aiPosition], aiPosition);
+//                        ai.setResultBoard(temp);
+//
+//                        // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
+//                        // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
+//                        Pair tempPair= new Pair(aiPosition % 13, aiPosition / 13);
+//                        if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
+//                            break;
+//
+//                        }
+//                    }
                 }
                 b.displayBoard();
                 AI.displayResult();
