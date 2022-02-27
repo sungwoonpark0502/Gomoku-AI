@@ -15,7 +15,7 @@ public class AI {
         resultBoard = new int[board.getSize()][board.getSize()];
     }
 
-    public int getPossibilities() {
+    public void getPossibilities() {
         if ( !board.getPlayerTurn() == false ) {
             for ( int i = 0 ; i < resultBoard.length ; i++) {
                 for ( int j = 0 ; j < resultBoard[0].length ; i++) {
@@ -36,8 +36,7 @@ public class AI {
                 }
             }
         }
-
-        return 0;
+        
     }
 
     public int getMaxNum() {

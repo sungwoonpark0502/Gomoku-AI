@@ -26,23 +26,4 @@ public class SearchTree {
             }
          }
     }
-    
-    //몇수를 볼수있는지에 대한 리밋 걸거나, 프루닝 << 레퍼런스가 많을거란말이지  >3<
-    public int valueCal() {
-        
-        int size = queue.size();
-        int totalVal = 0;
-
-        for ( int i = 0 ; i < size; i++){
-            AINode temp = queue.remove();
-
-            totalVal += temp.getData();
-
-            queue.add(temp);
-        }
-
-        return totalVal;
-    }
-
-
 }

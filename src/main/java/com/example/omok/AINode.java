@@ -7,16 +7,6 @@ public class AINode {
     private AI data;
     private AINode parentNode; // for some reason it could be used.
     private static ArrayList<AINode> children = new ArrayList<>();
-    
-    public class Pair {
-        int x;
-        int y;
-
-        public Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
 
     public AINode(AI value) {
         data = value;

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.omok;
 
 public class Pair {
     int x;
