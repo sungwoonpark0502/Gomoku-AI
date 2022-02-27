@@ -8,12 +8,12 @@ public class Stone {
 
     public Stone(String color, int x, int y) {
         this.Color = color;
-        this.x = x - 1;
-        this.y = y - 1;
+        this.x = x;
+        this.y = y;
     }
 
     public String getColor() {
-        return Color;
+        return this.Color;
     }
 
     public void setColor(String color) {
@@ -21,7 +21,7 @@ public class Stone {
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
@@ -29,7 +29,7 @@ public class Stone {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int y) {

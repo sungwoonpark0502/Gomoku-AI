@@ -68,38 +68,39 @@ public class GUI implements ActionListener {
                         buttons[i].setForeground(Color.white);
                         buttons[i].setText("O");
                         textField.setText("Black Turn");
-                        b.changeTurn();
                         check();
-                        Stone temp = b.fillBoard(buttons[i]);
+                        Stone temp = b.fillBoard(buttons[i], i);
                         ai.setResultBoard(temp);
 
                         // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
                         // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
-                        Pair tempPair= new Pair(buttons[i].getX(), buttons[i].getY());
+                        Pair tempPair= new Pair(i % 13, i / 13);
                         if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
                             break;
                         } 
                     }
                 }
                 else{ // 이 부분 인공지능 턴으로 만들어주기
+
                     if (buttons[i].getText() == "") {
                         buttons[i].setForeground(Color.black);
                         buttons[i].setText("O");
                         textField.setText("White Turn");
-                        b.changeTurn();
                         check();
-                        Stone temp = b.fillBoard(buttons[i]);
+                        Stone temp = b.fillBoard(buttons[i], i);
                         ai.setResultBoard(temp);
 
                         // 게임 이겼는지 아닌지 계속 확인해주는거임 자세한건 WinCon.Java 확인
                         // 다만 아직 x, y의 좌표를 GUI에서 확실하게 잡아주지않았기 때문에 작동은 안될꺼임
-                        Pair tempPair= new Pair(buttons[i].getX(), buttons[i].getY());
+                        Pair tempPair= new Pair(i % 13, i / 13);
                         if ( WinCon.isWinCon(new AINode(ai, 0, tempPair))) {
                             break;
 
                         } 
                     }
                 }
+                b.displayBoard();
+                AI.displayResult();
             }
             
         }

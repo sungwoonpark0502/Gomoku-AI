@@ -16,10 +16,13 @@ public class GameBoard {
         playerTurn = false;
     }
 
-    public Stone fillBoard(JButton x) {
+    public Stone fillBoard(JButton x, int location) {
         JButton temp = x;
-        Stone s = new Stone(temp.getForeground().toString().toLowerCase(), temp.getX(), temp.getY());
-        board[temp.getY() / 13 - 1][temp.getX() / 13 - 1] = s;
+        String color = "";
+        if (temp.getForeground().toString().equals("java.awt.Color[r=255,g=255,b=255]")) color = "white";
+        else color = "black";
+        Stone s = new Stone(color, location % 13, location / 13);
+        board[location / 13][location % 13] = s;
         return s;
     }
 

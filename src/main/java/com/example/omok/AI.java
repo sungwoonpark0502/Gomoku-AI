@@ -82,77 +82,77 @@ public class AI {
         // FOUR CORNERS
         // Top left corner
         if (x == 0 && y == 0) {
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
-            resultBoard[y + 1][x + 1] = resultBoard[y + 1][x + 1] + weight;
+            resultBoard[y][x + 1] += weight;
+            resultBoard[y + 1][x] += weight;
+            resultBoard[y + 1][x + 1] += weight;
         }
         // Top right corner
         if (x == end && y == 0) {
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
-            resultBoard[y + 1][x - 1] = resultBoard[y + 1][x + 1] + weight;
+            resultBoard[y][x - 1] += weight;
+            resultBoard[y + 1][x] += weight;
+            resultBoard[y + 1][x - 1] += weight;
         }
         // Bottom left corner
         if (x == 0 && y == end) {
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
-            resultBoard[y - 1][x] = resultBoard[y - 1][x] + weight;
-            resultBoard[y - 1][x + 1] = resultBoard[y - 1][x + 1] + weight;
+            resultBoard[y][x + 1] += weight;
+            resultBoard[y - 1][x] += weight;
+            resultBoard[y - 1][x + 1] += weight;
         }
 
         // Bottom right corner
         if (x == end && y == end) {
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
-            resultBoard[y - 1][x] = resultBoard[y - 1][x] + weight;
-            resultBoard[y - 1][x - 1] = resultBoard[y - 1][x - 1] + weight;
+            resultBoard[y][x - 1] += weight;
+            resultBoard[y - 1][x] += weight;
+            resultBoard[y - 1][x - 1] += weight;
         }
 
         // FOUR EDGES
         // Top edge
         if ((x > 0 && x < end) && y == 0) {
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
-            resultBoard[y + 1][x - 1] = resultBoard[y + 1][x - 1] + weight;
-            resultBoard[y + 1][x + 1] = resultBoard[y + 1][x + 1] + weight;
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
+            resultBoard[y][x - 1] += weight;
+            resultBoard[y][x + 1] += weight;
+            resultBoard[y + 1][x - 1] += weight;
+            resultBoard[y + 1][x + 1] += weight;
+            resultBoard[y + 1][x] += weight;
         }
 
         // Left edge
         if (x == 0 && (y > 0 && y < end)) {
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
-            resultBoard[y - 1][x] = resultBoard[y - 1][x] + weight;
-            resultBoard[y + 1][x + 1] = resultBoard[y + 1][x + 1] + weight;
-            resultBoard[y - 1][x + 1] = resultBoard[y - 1][x + 1] + weight;
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
+            resultBoard[y + 1][x] += weight;
+            resultBoard[y - 1][x] += weight;
+            resultBoard[y + 1][x + 1] += weight;
+            resultBoard[y - 1][x + 1] += weight;
+            resultBoard[y][x + 1] += weight;
         }
 
         // Right edge
         if (x == end && (y > 0 && y < end)) {
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
-            resultBoard[y - 1][x] = resultBoard[y - 1][x] + weight;
-            resultBoard[y + 1][x - 1] = resultBoard[y + 1][x - 1] + weight;
-            resultBoard[y - 1][x - 1] = resultBoard[y - 1][x - 1] + weight;
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + 1;
+            resultBoard[y + 1][x] += weight;
+            resultBoard[y - 1][x] += weight;
+            resultBoard[y + 1][x - 1] += weight;
+            resultBoard[y - 1][x - 1] += weight;
+            resultBoard[y][x - 1] += weight;
         }
 
         // Bottom edge
         if ((x > 0 && x < end) && y == end) {
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
-            resultBoard[y - 1][x - 1] = resultBoard[y - 1][x - 1] + weight;
-            resultBoard[y - 1][x + 1] = resultBoard[y - 1][x + 1] + weight;
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
+            resultBoard[y][x - 1] += weight;
+            resultBoard[y][x + 1] += weight;
+            resultBoard[y - 1][x - 1] += weight;
+            resultBoard[y - 1][x + 1] += weight;
+            resultBoard[y - 1][x] += weight;
         }
 
         // Regular case
         if (x > 0 && x < end && y > 0 && y < end) {
-            resultBoard[y - 1][x - 1] = resultBoard[y - 1][x - 1] + weight;
-            resultBoard[y - 1][x] = resultBoard[y - 1][x] + weight;
-            resultBoard[y - 1][x + 1] = resultBoard[y - 1][x + 1] + weight;
-            resultBoard[y][x - 1] = resultBoard[y][x - 1] + weight;
-            resultBoard[y][x + 1] = resultBoard[y][x + 1] + weight;
-            resultBoard[y + 1][x - 1] = resultBoard[y + 1][x - 1] + weight;
-            resultBoard[y + 1][x] = resultBoard[y + 1][x] + weight;
-            resultBoard[y + 1][x + 1] = resultBoard[y + 1][x + 1] + weight;
+            resultBoard[y - 1][x - 1] += weight;
+            resultBoard[y - 1][x] += weight;
+            resultBoard[y - 1][x + 1] += weight;
+            resultBoard[y][x - 1] += weight;
+            resultBoard[y][x + 1] += weight;
+            resultBoard[y + 1][x - 1] += weight;
+            resultBoard[y + 1][x] += weight;
+            resultBoard[y + 1][x + 1] += weight;
         }
 
         for (int i = 0; i < board.getSize(); i++) {
@@ -179,6 +179,11 @@ public class AI {
             }
             System.out.println();
         }
+    }
+
+    // 열린삼 같이 거의 이기는 경우의 수 고려하기 (ex: ooo )
+    private static void specialCase() {
+
     }
 
     public static int getMin() {
