@@ -3,11 +3,11 @@ import java.util.*;
 
 public class SearchTree {
     
-    public Queue<AINode> queue = new LinkedList<>();
-    public ArrayList<AINode> path = new ArrayList<>();
-    public ArrayList<AINode> visited = new ArrayList<>();
+    public static Queue<AINode> queue = new LinkedList<>();
+    public static ArrayList<AINode> path = new ArrayList<>();
+    public static ArrayList<AINode> visited = new ArrayList<>();
     
-    public ArrayList<AINode> bfs(AINode x) {
+    public static ArrayList<AINode> bfs(AINode x) {
         if ( x == null) return null;
 
         queue.add(x);
@@ -16,7 +16,7 @@ public class SearchTree {
             AINode temp = queue.remove();
             ArrayList<AINode> tempChildren = AINode.getChildren(temp);
 
-            if (WinCon.isWinCon(temp)) {
+            if (WinCon.isWinCon(temp) || path.size() == 5) {
                 return path;
             }
 

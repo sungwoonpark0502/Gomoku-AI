@@ -71,10 +71,18 @@ public class GUI implements ActionListener {
                         check();
                         Stone temp = b.fillBoard(buttons[i], i);
                         ai.setResultBoard(temp);
-
                         ai.calculateBoard();
-                        Pair pair = ai.getAiChoice();
-                        int aiPosition = pair.x + pair.y * 13;
+                        ai.getPossibilities();
+
+                        int tempx = i % 13;
+                        int tempy = i / 13;
+                        Pair pair = new Pair(tempx, tempy);
+                        AINode calminMax = new AINode(ai, 0, pair);
+                        
+                        ArrayList<AINode> path = SearchTree.bfs(calminMax);
+                        Pair aichoice = path.get(0).getLastCord();
+                        int aiPosition = aichoice.x + aichoice.y * 13;
+
                         if (buttons[aiPosition].getText() == "") {
                             buttons[aiPosition].setForeground(Color.black);
                             buttons[aiPosition].setText("O");

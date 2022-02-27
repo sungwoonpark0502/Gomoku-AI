@@ -41,13 +41,7 @@ public class AI {
     public Pair getAiChoice() {
         Pair pair = null;
 
-        for (int i = 0; i < resultBoard.length; i++) {
-            for (int j = 0; j < resultBoard.length; j++) {
-                if (max == resultBoard[i][j]) {
-                    pair = new Pair(j, i);
-                }
-            }
-        }
+        
 
         return pair;
     }
