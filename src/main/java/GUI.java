@@ -1,7 +1,11 @@
+import javafx.scene.shape.Circle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import static javafx.application.Application.launch;
 
@@ -36,8 +40,9 @@ public class GUI implements ActionListener {
 
         for(int i = 0; i < 169; i++){
             buttons[i] = new JButton();
+            buttons[i].setBackground(Color.black);
             button_panel.add(buttons[i]);
-            buttons[i].setFont(new Font("MV Boli", Font.BOLD, 120));
+            buttons[i].setFont(new Font("MV Boli", Font.BOLD, 30));
             buttons[i].setFocusable(false);
             buttons[i].addActionListener(this);
         }
@@ -45,7 +50,12 @@ public class GUI implements ActionListener {
         title_panel.add(textField);
         frame.add(title_panel, BorderLayout.NORTH);
         frame.add(button_panel);
-
+        for(int i = 0; i < 169; i++){
+            buttons[i].setBorder(new LineBorder(Color.black));
+            buttons[i].setBackground(new Color(135,80,0));
+            buttons[i].setOpaque(true);
+            button_panel.setBackground(Color.white);
+        }
 
     }
     @Override
@@ -54,7 +64,7 @@ public class GUI implements ActionListener {
             if(e.getSource() == buttons[i]){
                 if(player1_turn){
                     if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(Color.red);
+                        buttons[i].setForeground(Color.white);
                         buttons[i].setText("O");
                         player1_turn = false;
                         textField.setText("Black Turn");
@@ -63,8 +73,8 @@ public class GUI implements ActionListener {
                 }
                 else{
                     if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(new Color(0,0,255));
-                        buttons[i].setText("X");
+                        buttons[i].setForeground(Color.black);
+                        buttons[i].setText("O");
                         player1_turn = true;
                         textField.setText("White Turn");
                         check();
