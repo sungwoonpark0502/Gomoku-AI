@@ -102,8 +102,8 @@ public class GUI implements ActionListener {
                 b.displayBoard();
                 AI.displayResult();
             }
-            
         }
+
     }
 
     public void check(){
