@@ -1,12 +1,9 @@
+package com.example.omok;
+
 import javafx.scene.shape.Circle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import static javafx.application.Application.launch;
 
 public class GUI implements ActionListener {
