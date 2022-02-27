@@ -6,6 +6,4 @@ module com.example.omok {
 
     opens com.example.omok to javafx.fxml;
     exports com.example.omok;
-    exports com.example.omok.Omok;
-    opens com.example.omok.Omok to javafx.fxml;
 }
