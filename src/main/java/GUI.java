@@ -1,4 +1,8 @@
 import javafx.scene.shape.Circle;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -64,7 +68,11 @@ public class GUI implements ActionListener {
             if(e.getSource() == buttons[i]){
                 if(player1_turn){
                     if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(Color.white);
+                        buttons[i].setIcon(new ImageIcon("/Users/james/IdeaProjects/Omok/src/main/java/white_stone.png"));
+                        buttons[i].setLocation(150,100);
+                        buttons[i].setAlignmentY(100);
+                        buttons[i].setForeground(new Color(135,80,0));
+                        buttons[i].setAlignmentX(100);
                         buttons[i].setText("O");
                         player1_turn = false;
                         textField.setText("Black Turn");
@@ -73,7 +81,8 @@ public class GUI implements ActionListener {
                 }
                 else{
                     if (buttons[i].getText() == "") {
-                        buttons[i].setForeground(Color.black);
+                        buttons[i].setIcon(new ImageIcon("/Users/james/IdeaProjects/Omok/src/main/java/black_stone.png"));
+                        buttons[i].setForeground(new Color(135,80,0));
                         buttons[i].setText("O");
                         player1_turn = true;
                         textField.setText("White Turn");
@@ -93,38 +102,17 @@ public class GUI implements ActionListener {
         // get random num 0 or 1
         if(random.nextInt(2) == 0){
             player1_turn = true;
-            textField.setText("White Turn");
+            textField.setText("Black Turn");
         }
         else{
             player1_turn = false;
-            textField.setText("Black Turn");
+            textField.setText("White Turn");
         }
     }
 
     public void check(){
     }
 
-    public void whiteWins(int a, int b, int c){
-        buttons[a].setBackground(Color.GREEN);
-        buttons[b].setBackground(Color.GREEN);
-        buttons[c].setBackground(Color.GREEN);
-
-        for(int i = 0; i < 169; i++){
-            buttons[i].setEnabled(false);
-        }
-        textField.setText("Black WINS!");
-    }
-
-    public void blackWins(int a, int b, int c){
-        buttons[a].setBackground(Color.GREEN);
-        buttons[b].setBackground(Color.GREEN);
-        buttons[c].setBackground(Color.GREEN);
-
-        for(int i = 0; i < 169; i++){
-            buttons[i].setEnabled(false);
-        }
-        textField.setText("White WINS!");
-    }
     public static void main(String[] args){
         new GUI();
     }
