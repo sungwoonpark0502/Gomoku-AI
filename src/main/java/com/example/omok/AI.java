@@ -1,20 +1,44 @@
 package com.example.omok;
 
+import java.util.ArrayList;
+
 public class AI {
 
     private static GameBoard board;
     private static int[][] resultBoard;
     private int max;
     private int min;
+    private static ArrayList<Pair> minmaxList = new ArrayList<>();
 
     public AI(GameBoard b) {
         board = b;
         resultBoard = new int[board.getSize()][board.getSize()];
     }
 
-//    public int getPossibilities() {
-//
-//    }
+    public int getPossibilities() {
+        if ( !board.getPlayerTurn() == false ) {
+            for ( int i = 0 ; i < resultBoard.length ; i++) {
+                for ( int j = 0 ; j < resultBoard[0].length ; i++) {
+                   if( min == resultBoard[i][j]) {
+                        Pair temp = new Pair(j, i);
+                        minmaxList.add(temp);
+                   } 
+                }
+            }
+        }
+        else {
+            for ( int i = 0 ; i < resultBoard.length ; i++) {
+                for ( int j = 0 ; j < resultBoard[0].length ; i++) {
+                   if( max == resultBoard[i][j]) {
+                        Pair temp = new Pair(j, i);
+                        minmaxList.add(temp);
+                   } 
+                }
+            }
+        }
+
+        return 0;
+    }
 
     public int getMaxNum() {
         return this.max;
@@ -159,5 +183,7 @@ public class AI {
         }
     }
 
-
+    public static ArrayList<Pair> getMinMaxList() {
+        return minmaxList;
+    }
 }

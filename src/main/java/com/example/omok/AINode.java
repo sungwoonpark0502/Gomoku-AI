@@ -4,21 +4,27 @@ import java.util.*;
 
 public class AINode {
     
-    private int minimaxVal;
+    private AI data;
     private AINode parentNode; // for some reason it could be used.
     private static ArrayList<AINode> children = new ArrayList<>();
     
-    public AINode(int value) {
-        minimaxVal = value;
+    public class Pair {
+        int x;
+        int y;
+
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    public AINode(AI value) {
+        data = value;
         parentNode = null;
     }
 
-    public void setData(int value) {
-        minimaxVal = value;
-    }
-
-    public int getData() {
-        return minimaxVal;
+    public AI getData() {
+        return data;
     }
 
     public AINode getChild(int index) {
@@ -48,4 +54,11 @@ public class AINode {
     public static ArrayList<AINode> getChildren(AINode x) {
         return children;
     }
+
+    public void putChildrenNode() {
+        ArrayList<Pair> temp = AI.getMinMaxList();
+
+    }
 }
+
+// AI min board min 
